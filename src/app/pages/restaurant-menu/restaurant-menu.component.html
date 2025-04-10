@@ -1,0 +1,13 @@
+<div class="menu-container">
+    <h2>Restaurant Menu</h2>
+   
+    <div class="menu-item" *ngFor="let item of menuItems">
+      
+    <h3>{{ item.name }}</h3>
+      <p>{{ item.description }}</p>
+      <p>Price: ₹{{ item.price }}</p>
+      <button (click)="addItemToCart(item)">Add to Cart</button>
+      <button (click)="GoToCart()">Go to Cart</button>
+    </div>
+  </div>
+   

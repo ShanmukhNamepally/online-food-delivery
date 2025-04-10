@@ -1,0 +1,25 @@
+<div class="payment-container">
+    <h2>Payment Details</h2>
+   
+    <form (ngSubmit)="onPay()">
+      <label>Amount: ₹{{ amount }}</label>
+   
+      <div>
+        <label>Payment Method:</label>
+        <select [(ngModel)]="paymentMethod" name="paymentMethod" required>
+          <option value="" disabled selected>Select Method</option>
+          <option value="card">Credit/Debit Card</option>
+          <option value="wallet">Wallet</option>
+        </select>
+      </div>
+   
+      <div *ngIf="paymentMethod === 'card'">
+        <input type="text" placeholder="Card Number" [(ngModel)]="cardNumber" name="cardNumber" required>
+        <input type="text" placeholder="Cardholder Name" [(ngModel)]="cardName" name="cardName" required>
+        <input type="text" placeholder="Expiry Date (MM/YY)" [(ngModel)]="expiryDate" name="expiryDate" required>
+        <input type="password" placeholder="CVV" [(ngModel)]="cvv" name="cvv" required>
+      </div>
+   
+      <button type="submit">Pay Now</button>
+    </form>
+  </div>
