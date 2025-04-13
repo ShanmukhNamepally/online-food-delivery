@@ -1,35 +1,75 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
- 
-interface MenuItem {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-}
- 
+import { CartService } from '../../cart.service';
+import { MenuItem as MenuItemModel } from '../../../Models/menu-item.model'
+import { OrderItemsService } from '../../order-items.service';
+import { OrderItem } from '../../order-items.model';
+
+
+// interface MenuItem {
+//   id: number;
+//   name: string;
+//   description: string;
+//   price: number;
+//   quantity: number;
+//   addedToCart?: boolean; 
+// }
+
 @Component({
   selector: 'app-restaurant-menu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './restaurant-menu.component.html',
   styleUrls: ['./restaurant-menu.component.css']
 })
-export class RestaurantMenuComponent {
-  menuItems: MenuItem[] = [
-    { id: 1, name: 'Pizza Margherita', description: 'Classic cheese and tomato pizza', price: 250 },
-    { id: 2, name: 'Veg Burger', description: 'Loaded with fresh veggies', price: 120 },
-    { id: 3, name: 'Pasta Alfredo', description: 'Creamy white sauce pasta', price: 200 }
-  ];
+export class RestaurantMenuComponent implements OnInit {
+  menuItems: MenuItemModel[] = [];
+  // cartItems: MenuItem[] = [];
 
-  constructor(private router: Router){}
- 
-  addItemToCart(item: MenuItem) {
-alert(`${item.name} added to cart!`);
-  }
+  constructor(private orderItemsService: OrderItemsService, private router: Router) { }
+  
 
-  GoToCart(){
-    this.router.navigate(['/cart'])
-  }
+  
+ngOnInit(): void {
+    this.orderItemsService.getMenuItems().subscribe((items: MenuItemModel[]) => {
+      this.menuItems = items;
+    }, error => {
+      console.error('Error fetching menu items:', error);
+    });
+  }
+
+      
+  addToCart(item: MenuItemModel) {
+    {
+      let orderItem : OrderItem = {
+        orderItemID : 0,
+        // name : item.name,
+        orderID : 3,
+        itemID : item.itemID,
+        quantity: 1,
+        price:item.price
+      }
+   
+this.orderItemsService.addToCart(orderItem).subscribe({
+        next: (data) => {
+          console.log("Item added to cart", data);
+          item.addedToCart = true; // Update the flag if needed
+        },
+        error: (err) => {
+          console.log("Error adding item to cart", err);
+        }
+      });
+    }
+          
+ }
+
+  
+goToCart() {
+     this.orderItemsService.getCartItems().subscribe((items: MenuItemModel[]) => { // Use the model for type annotation
+      this.router.navigate(['/cart']);
+     });
+   }
+  
 }

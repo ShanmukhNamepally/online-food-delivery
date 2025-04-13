@@ -1,40 +1,64 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
- 
+import { HttpClientModule } from '@angular/common/http';
+import { CartService } from '../../cart.service';
+import { OrderItem } from '../../order-items.model';
+import { error } from 'console';
+
+interface MenuItem {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  quantity: number;
+}
+
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
-  cartItems = [
-    { name: 'Chicken Biryani', price: 199, quantity: 1 },
-    { name: 'Cheese Pizza', price: 249, quantity: 1 },
-  ];
+  cartItems: OrderItem[] = [];
 
-  constructor(private router: Router) {}
- 
-  getTotal() {
-    return this.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  constructor(private cartService: CartService, private router: Router) {
+    this.cartService.getCartItems().subscribe(items => {
+      this.cartItems = items;
+    });
   }
- 
-  increaseQty(item: any) {
-    item.quantity++;
+
+  getTotal(): number {
+    return this.cartService.getTotal();
   }
- 
-  decreaseQty(item: any) {
-    if (item.quantity > 1) {
-      item.quantity--;
-    }
+
+  increaseQty(item: OrderItem): void {
+    this.cartService.increaseQty(item);
   }
- 
-  removeItem(index: number) {
-    this.cartItems.splice(index, 1);
+
+  decreaseQty(item: OrderItem): void {
+    this.cartService.decreaseQty(item);
   }
-  goToPayment() {
-    this.router.navigate(['/payment-page']);
+
+  removeItem(index: number): void {
+    this.cartService.removeItem(index)
+    // .subscribe({
+    //   next: (data : any) =>{
+    //     this.getTotal ;
+    //   },
+    //   error: (err: any) =>
+    //   {
+    //     console.log(err);
+    //   }
+
+    // });
+    console.log("deleted");
+    this.getTotal();
+  }
+
+  goToPayment(): void {
+    this.cartService.goToPayment(this.router);
   }
 }
