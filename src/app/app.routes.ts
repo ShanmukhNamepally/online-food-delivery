@@ -11,6 +11,7 @@ import { RestaurantMenuComponent } from './pages/restaurant-menu/restaurant-menu
 import { AppComponent } from './app.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { AuthGuard } from './auth.guard';
+import { RestaurantListComponent } from './restaurants/restaurants.component';
  
 export const routes: Routes = [
   { path: '', component:LoginComponent },
@@ -21,7 +22,8 @@ export const routes: Routes = [
   { path: 'order-tracking', component: OrderTrackingComponent,canActivate: [AuthGuard] },
   { path: 'payment-page', component: PaymentPageComponent,canActivate: [AuthGuard] },
   { path: 'restaurant-menu', component: RestaurantMenuComponent,canActivate: [AuthGuard] },
-  { path : 'cart', component: CartComponent,canActivate: [AuthGuard] }
+  { path : 'cart', component: CartComponent,canActivate: [AuthGuard] },
+  { path : 'restaurants', component: RestaurantListComponent}
 ];
  
 export const appRoutes = provideRouter(routes);

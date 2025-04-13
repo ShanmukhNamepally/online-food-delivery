@@ -30,4 +30,7 @@ export class CustomerDashboardComponent {
   goToCart(){
     this.router.navigate(['/cart'])
   }
+  goToRestaurant(){
+    this.router.navigate(['/restaurants'])
+  }
 }
