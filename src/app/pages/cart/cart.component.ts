@@ -25,7 +25,8 @@ export class CartComponent {
   }
 
   updateTotal(): void {
-    this.totalAmount = this.cartService.getTotal();
+
+    this.totalAmount = this.cartService.getTotal(this.cartItems);
     console.log('Total amount updated:', this.totalAmount);
   }
   

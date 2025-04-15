@@ -14,6 +14,7 @@ export class CartService {
   cartItems: OrderItem[] = [];
 
   constructor(private http: HttpClient, private authService: AuthService) { }
+
   private getAuthHeaders(): HttpHeaders {
     const token = this.authService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -29,22 +30,25 @@ export class CartService {
   }
 
   getCartItems(): Observable<OrderItem[]> {
-    return this.http.get<OrderItem[]>(this.apiUrl, { headers: this.getAuthHeaders() });
+    const customerId = this.authService.getCustomerId();
+    if (customerId === null) {
+      throw new Error('Customer ID is null');
+    }
+    const url = `${this.apiUrl}/customer/${customerId}`;
+   return this.http.get<OrderItem[]>(url, { headers: this.getAuthHeaders() });
+    
   }
 
   getMenuItems(): Observable<OrderItem[]> {
     return this.http.get<OrderItem[]>(this.menuApiUrl, { headers: this.getAuthHeaders() });
   }
 
-  getTotal(): number {
+  getTotal(cartItems:any[]): number {
     let total = 0;
+    this.cartItems=cartItems;
     this.cartItems.forEach(item => {
-      console.log('Item:', item);
-      console.log('Item price:', item.price);
-      console.log('Item quantity:', item.quantity);
       total += item.price * item.quantity;
     });
-    console.log('Total calculated:', total);
     return total;
   }
 
@@ -64,5 +68,9 @@ export class CartService {
 
   goToPayment(router: Router): void {
     router.navigate(['/payment-page']);
+  }
+
+  getCustomerId(): number | null {
+    return this.authService.getCustomerId();
   }
 }
