@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { OrderItem } from './order-items.model';
+import { OrderItem } from '../Models/order-items.model';
 
 @Injectable({
   providedIn: 'root'

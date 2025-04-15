@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { CartService } from '../../cart.service';
 import { MenuItem as MenuItemModel } from '../../../Models/menu-item.model'
 import { OrderItemsService } from '../../order-items.service';
-import { OrderItem } from '../../order-items.model';
+import { OrderItem } from '../../../Models/order-items.model';
 
 
 // interface MenuItem {
@@ -45,8 +45,9 @@ ngOnInit(): void {
     {
       let orderItem : OrderItem = {
         orderItemID : 0,
-        // name : item.name,
-        orderID : 3,
+        name : item.name,
+        customerID : item.customerID,
+        orderID : 5,
         itemID : item.itemID,
         quantity: 1,
         price:item.price
