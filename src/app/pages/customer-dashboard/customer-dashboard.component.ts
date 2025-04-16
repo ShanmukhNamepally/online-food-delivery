@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth.service';
  
 @Component({
   selector: 'app-customer-dashboard',
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class CustomerDashboardComponent {
   customerName = 'Thella'; // static name for now
  
-  constructor(private router: Router) {}
+  constructor(private router: Router,private authService:AuthService) {}
  
   goToMenu() {
     this.router.navigate(['/restaurant-menu']);
@@ -32,5 +33,10 @@ export class CustomerDashboardComponent {
   }
   goToRestaurant(){
     this.router.navigate(['/restaurants'])
+  }
+
+  logOut(){
+    localStorage.removeItem('jwt_token');
+    this.router.navigate(['/login'])
   }
 }

@@ -3,7 +3,7 @@
   <div *ngFor="let item of menuItems" class="menu-item">
     <h3>{{ item.name }}</h3>
     <p>{{ item.description }}</p>
-    <p>Price: ₹{{ item.price }}</p>
+    <p class="price">Price: ₹{{ item.price }}</p>
     <button (click)="addToCart(item)">
       {{ item.addedToCart ? 'Added to Cart' : 'Add to Cart' }}
     </button>

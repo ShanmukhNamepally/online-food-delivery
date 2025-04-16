@@ -1,17 +1,63 @@
+/* Styling for the menu container */
 .menu-container {
-    max-width: 700px;
-    margin: 30px auto;
-    text-align: center;
-  }
-   
-  .menu-item {
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 10px;
-  }
-   
-  button {
-    padding: 8px 16px;
-    margin-top: 10px;
-  }
+  margin: 50px auto;
+  width: 80%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Styling for the menu items */
+.menu-item {
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #000000;
+}
+
+.menu-item p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.menu-item .price {
+  font-weight: bold;
+  color: #000000;
+}
+
+.menu-item .buttons {
+  margin-top: 10px;
+}
+
+.menu-item button {
+  margin-right: 10px;
+  padding: 10px 15px;
+  background-color: #5aa6f7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item button:hover {
+  background-color: #0056b3;
+}

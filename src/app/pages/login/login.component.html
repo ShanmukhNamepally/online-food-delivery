@@ -1,40 +1,38 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Food Delivery App</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/register">Register</a>
-          </li>
-         
-        </ul>
-        
-      </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Food Delivery App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/register">Register</a>
+        </li>
+      </ul>
     </div>
-  </nav>
-<div style="margin: 50px auto; width: 300px;">
+  </div>
+</nav>
+
+<div class="login-container">
   <h2>Login</h2>
   <form (ngSubmit)="onLogin()">
-      <div>
-          <label>Username:</label>
-          <input type="text" [(ngModel)]="username" name="username" required />
-      </div>
-      <div>
-          <label>Password:</label>
-          <input type="password" [(ngModel)]="password" name="password" required />
-      </div>
-      <div style="margin-top: 10px;">
-          <button type="submit">Login</button>
-      </div>
-      <div style="margin-top: 10px;">
-          <a href="/forgot-password">Forgot Password?</a>
-      </div>
+    <div>
+      <label>Username:</label>
+      <input type="text" [(ngModel)]="username" name="username" required />
+    </div>
+    <div>
+      <label>Password:</label>
+      <input type="password" [(ngModel)]="password" name="password" required />
+    </div>
+    <div style="margin-top: 10px;">
+      <button type="submit">Login</button>
+    </div>
+    <div style="margin-top: 10px;">
+      <a href="/forgot-password">Forgot Password?</a>
+    </div>
   </form>
 </div>

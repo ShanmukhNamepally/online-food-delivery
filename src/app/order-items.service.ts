@@ -15,7 +15,6 @@ export class OrderItemsService {
   constructor(private http: HttpClient,  private authService: AuthService) { }
 
   addToCart(item: OrderItem): Observable<any> {
-    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiUrl, item, { headers: this.getAuthHeaders() });
   }
 
@@ -28,10 +27,6 @@ getMenuItems(): Observable<MenuItemModel[]> { // Add this method
     }
   
 
-  // private getAuthHeaders(): HttpHeaders {
-  //   const token = localStorage.getItem('token'); // Adjust based on your auth implementation
-  //   return new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  // }
   private getAuthHeaders(): HttpHeaders {
     const token = this.authService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);

@@ -1,0 +1,51 @@
+/* Styling for the restaurant list container */
+.restaurant-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .restaurant-item {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 80%; /* Adjust width as needed */
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .restaurant-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .restaurant-item h3 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  .restaurant-item p {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .restaurant-item button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .restaurant-item button:hover {
+    background-color: #0056b3;
+  }
+  
