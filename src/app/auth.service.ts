@@ -11,24 +11,29 @@ export class AuthService {
   private jwtHelper = new JwtHelperService();
  
   constructor(private http: HttpClient) { }
- 
+
   login(credentials: { emailAddress: string, password: string }): Observable<any> {
    return this.http.post<any>(this.apiUrl, credentials);
+   return this.http.post<any>(this.apiUrl, credentials);
   }
- 
+
   saveToken(token: string): void {
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem('jwt_token', token);
     }
+    if (this.isLocalStorageAvailable()) {
+      localStorage.setItem('jwt_token', token);
+    }
   }
- 
+
   getToken(): string | null {
     if (this.isLocalStorageAvailable()) {
+      return localStorage.getItem('jwt_token');
       return localStorage.getItem('jwt_token');
     }
     return null;
   }
- 
+
   logout(): void {
     localStorage.removeItem('jwt_token');
   }

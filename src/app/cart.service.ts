@@ -59,6 +59,7 @@ export class CartService {
   getTotal(cartItems:any[]): number {
     let total = 0;
     this.cartItems=cartItems;
+    this.cartItems=cartItems;
     this.cartItems.forEach(item => {
       total += item.price * item.quantity;
     });
