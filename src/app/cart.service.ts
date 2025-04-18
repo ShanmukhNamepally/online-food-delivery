@@ -23,7 +23,7 @@ export class CartService {
   addToCart(item: OrderItem): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const existingItem = this.cartItems.find(cartItem => cartItem.itemID === item.itemID);
-  
+ 
     if (existingItem) {
       existingItem.quantity += item.quantity;
       return this.http.put(`${this.apiUrl}/${existingItem.orderItemID}`, existingItem, { headers, withCredentials: true }).pipe(
@@ -40,6 +40,7 @@ export class CartService {
       );
     }
   }
+ 
   
  
   getCartItems(): Observable<OrderItem[]> {
@@ -86,5 +87,8 @@ export class CartService {
  
   getCustomerId(): number | null {
     return this.authService.getCustomerId();
+  }
+  isItemInCart(itemID: number, customerID: number): boolean {
+    return this.cartItems.some(cartItem => cartItem.itemID === itemID && cartItem.customerID === customerID);
   }
 }

@@ -32,14 +32,21 @@ export class CartComponent {
  
  
   increaseQty(item: OrderItem): void {
+   
     this.cartService.increaseQty(item);
+  
     this.updateTotal();
     console.log('Quantity increased:', item);
+
   }
  
   decreaseQty(item: OrderItem): void {
+    
     this.cartService.decreaseQty(item);
+   
     this.updateTotal();
+   
+    
     console.log('Quantity decreased:', item);
   }
  
@@ -60,5 +67,5 @@ export class CartComponent {
   goToPayment(): void {
     this.cartService.goToPayment(this.router);
   }
-
+ 
 }

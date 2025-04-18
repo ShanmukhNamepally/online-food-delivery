@@ -39,4 +39,7 @@ export class CustomerDashboardComponent {
     localStorage.removeItem('jwt_token');
     this.router.navigate(['/login'])
   }
+  viewMenu(): void {
+    this.router.navigate(['/restaurant-menu']);
+  }
 }

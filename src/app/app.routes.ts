@@ -17,7 +17,7 @@ export const routes: Routes = [
   { path: '', component:LoginComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'customer-dashboard', component: CustomerDashboardComponent },
+  { path: 'customer-dashboard', component: CustomerDashboardComponent ,canActivate: [AuthGuard]},
   { path: 'admin-dashboard', component: AdminDashboardComponent,canActivate: [AuthGuard] },
   { path: 'order-tracking', component: OrderTrackingComponent,canActivate: [AuthGuard] },
   { path: 'payment-page', component: PaymentPageComponent,canActivate: [AuthGuard] },

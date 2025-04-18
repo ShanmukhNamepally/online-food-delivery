@@ -48,16 +48,23 @@ input[type="text"]:focus {
 .hero {
   text-align: center;
   padding: 50px 20px;
-  background-color: #f8f9fa;
+  background-color: antiquewhite;
+  /* background-image: url('https://tse2.mm.bing.net/th/id/OIP.KFdw8aSDf-PMswwzpZkyvgHaEi?w=291&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+
 .hero-text h1 {
-  font-size: 36px;
+  font-size: 45px;
+  color:#000000;
   margin-bottom: 20px;
 }
 
 .hero-text p {
-  font-size: 18px;
+  font-size: 25px;
+  color:#000000;
   margin-bottom: 30px;
 }
 
@@ -101,3 +108,16 @@ input[type="text"]:focus {
 .card-container ul h1 img:hover {
   transform: scale(1.1);
 }
+
+.clickable-image {
+  cursor: pointer;
+  border-radius: 20px;
+  width: 400px;
+  height:300px;
+  transition: transform 0.3s ease;
+  }
+  
+  .clickable-image:hover {
+   transform: scale(1.05);
+   }
+  

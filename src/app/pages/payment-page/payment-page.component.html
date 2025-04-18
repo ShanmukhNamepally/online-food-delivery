@@ -1,25 +1,34 @@
 <div class="payment-container">
-    <h2>Payment Details</h2>
-   
-    <form (ngSubmit)="onPay()">
-      <label>Amount: ₹{{ amount }}</label>
-   
-      <div>
-        <label>Payment Method:</label>
-        <select [(ngModel)]="paymentMethod" name="paymentMethod" required>
-          <option value="" disabled selected>Select Method</option>
-          <option value="card">Credit/Debit Card</option>
-          <option value="wallet">Wallet</option>
-        </select>
-      </div>
-   
-      <div *ngIf="paymentMethod === 'card'">
-        <input type="text" placeholder="Card Number" [(ngModel)]="cardNumber" name="cardNumber" required>
-        <input type="text" placeholder="Cardholder Name" [(ngModel)]="cardName" name="cardName" required>
-        <input type="text" placeholder="Expiry Date (MM/YY)" [(ngModel)]="expiryDate" name="expiryDate" required>
-        <input type="password" placeholder="CVV" [(ngModel)]="cvv" name="cvv" required>
-      </div>
-   
-      <button type="submit">Pay Now</button>
-    </form>
+  <h2>Payment Details</h2>
+
+  <form (ngSubmit)="onPay()">
+    <label>Amount: ₹{{ amount }}</label>
+
+    <div>
+      <label>Payment Method:</label>
+      <select [(ngModel)]="paymentMethod" name="paymentMethod" required>
+        <option value="" disabled selected>Select Method</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="wallet">Wallet</option>
+      </select>
+    </div>
+
+    <div *ngIf="paymentMethod === 'card'">
+      <input type="text" placeholder="Card Number" [(ngModel)]="cardNumber" name="cardNumber" required>
+      <input type="text" placeholder="Cardholder Name" [(ngModel)]="cardName" name="cardName" required>
+      <input type="text" placeholder="Expiry Date (MM/YY)" [(ngModel)]="expiryDate" name="expiryDate" required>
+      <input type="password" placeholder="CVV" [(ngModel)]="cvv" name="cvv" required>
+    </div>
+
+    <button type="submit" [disabled]="processingPayment || paymentProcessed">Pay Now</button>
+  </form>
+
+  <div *ngIf="processingPayment">
+    <p>Payment of ₹{{ amount }} is being processed...</p>
   </div>
+
+  <div *ngIf="paymentProcessed">
+    <p>Payment processed successfully!</p>
+    <p>You will be redirected to your dashboard shortly...</p>
+  </div>
+</div>

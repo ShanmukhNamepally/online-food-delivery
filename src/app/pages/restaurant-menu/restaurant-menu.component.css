@@ -1,63 +1,82 @@
-/* Styling for the menu container */
+
 .menu-container {
-  margin: 50px auto;
-  width: 80%;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-inline: auto;
+    margin-block: 3rem; 
+    width: 90%; 
+    max-width: 60rem; 
+    padding: 2.5rem; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 0.75rem; 
+    background-color: #f8f8f8;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05); 
 }
 
 .menu-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #333;
+    text-align: center; 
+    margin-bottom: 2rem; 
+    font-size: 2.75rem; 
+    font-weight: 700; 
+    color: #333;
+    letter-spacing: 0.03em; 
+    border-bottom: 0.2rem solid #f39c12; 
+    padding-bottom: 0.75rem; 
+    display: inline-block; 
+    width: auto; 
 }
 
-/* Styling for the menu items */
+
 .menu-item {
-  border-bottom: 1px solid #ddd;
-  padding: 20px 0;
+    padding-block: 1.75rem; 
+    border-bottom: 1px solid #eee; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
 }
 
 .menu-item:last-child {
-  border-bottom: none;
+    border-bottom: none; 
+}
+
+.menu-item-details {
+    flex-grow: 1; 
 }
 
 .menu-item h3 {
-  margin: 0;
-  font-size: 1.8rem;
-  color: #000000;
+    margin-block-end: 0.5rem; 
+    font-size: 1.9rem; /* Slightly larger item name */
+    color: #2d3748; /* Darker, professional text color */
+    font-weight: 600; /* Semi-bold for emphasis */
 }
 
 .menu-item p {
-  margin: 5px 0;
-  color: #555;
+    margin-block: 0.5rem; /* Vertical spacing for the description */
+    color: #555; /* Readable description color */
+    line-height: 1.6; /* Improved text readability */
 }
 
 .menu-item .price {
-  font-weight: bold;
-  color: #000000;
+    font-weight: 700; /* Bold price for emphasis */
+    color: #e67e22; /* Distinct color for the price */
+    font-size: 1.3rem; /* Slightly larger price */
 }
 
 .menu-item .buttons {
-  margin-top: 10px;
+    display: flex; /* Arrange buttons horizontally */
+    gap: 0.75rem; /* Spacing between buttons */
 }
 
 .menu-item button {
-  margin-right: 10px;
-  padding: 10px 15px;
-  background-color: #5aa6f7;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    padding-inline: 1.1rem; /* Horizontal padding inside the button */
+    padding-block: 0.6rem; /* Vertical padding inside the button */
+    background-color: #3498db; /* Professional blue button color */
+    color: #fff; /* White text for contrast */
+    border: none; /* Remove default button border */
+    border-radius: 0.5rem; /* Slightly rounded button corners */
+    cursor: pointer; /* Indicate it's clickable */
+    font-size: 1rem; /* Standard button text size */
+    transition: background-color 0.2s ease-in-out; /* Smooth hover transition */
 }
 
 .menu-item button:hover {
-  background-color: #0056b3;
+    background-color: #2980b9; /* Darker shade on hover for feedback */
 }

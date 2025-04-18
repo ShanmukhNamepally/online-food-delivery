@@ -1,19 +1,115 @@
 .payment-container {
-    max-width: 400px;
-    margin: 50px auto;
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-  }
-   
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-   
-  input, select, button {
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
-  }
+  max-width: 450px;
+  margin: 60px auto;
+  text-align: left;
+  padding: 30px;
+  border: 1px solid #d3d3d3;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.payment-container h2 {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  text-align: center;
+  border-bottom: 2px solid #f39c12;
+  padding-bottom: 10px;
+}
+
+form {
+  display: grid;
+  gap: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #34495e;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  background-color: #fdfdfd;
+  color: #333;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.25);
+}
+
+.card-details {
+  border-top: 2px solid #ecf0f1;
+  padding-top: 25px;
+  margin-top: 25px;
+}
+
+.card-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.cvv-group {
+  margin-top: 18px;
+}
+
+button {
+  background-color: #27ae60;
+  color: #fff;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+  background-color: #219653;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
+}
+
+.payment-methods {
+  margin-top: 30px;
+  text-align: center;
+  color: #7f8c8d;
+}
+
+.payment-methods img {
+  max-height: 32px;
+  margin: 0 8px;
+  vertical-align: middle;
+  opacity: 0.9;
+  filter: grayscale(20%);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.payment-methods img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+.payment-container label[for="cardNumber"],
+.payment-container label[for="expiryDate"] {
+  color: #e67e22;
+}
