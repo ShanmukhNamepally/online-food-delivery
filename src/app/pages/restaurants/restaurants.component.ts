@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Restaurant } from '../../Models/restaurants.model';
-import { RestaurantService } from '../restaurant-service.service';
+import { Restaurant } from '../../../Models/restaurants.model';
+import { RestaurantService } from '../../services/restaurant-service.service';
 import { CommonModule } from '@angular/common'; 
 
 

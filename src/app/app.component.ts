@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { LoginComponent } from "./pages/login/login.component";
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
  
 @Component({
   selector: 'app-root',

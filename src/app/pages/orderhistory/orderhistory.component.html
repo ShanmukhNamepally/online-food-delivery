@@ -1,0 +1,30 @@
+<div *ngIf="isLoggedIn; else notLoggedIn">
+  <div *ngIf="orderHistory.length > 0; else noOrders">
+    <h2>Order History</h2>
+
+    <button (click)="clearHistory()">Clear Order History</button>
+
+    <div *ngFor="let order of orderHistory" class="order-container">
+      <h4>Ordered Date: {{ order.orderDate | date: 'mediumDate' }}</h4>
+      <p>Status: {{ order.status }}</p>
+
+      <div *ngFor="let item of order.orderItems" class="product-item">
+        <div class="details">
+          <p><strong>{{ item.productName }}</strong></p>
+          <p>Price: ₹{{ item.unitPrice }}</p>
+          <p>Quantity: {{ item.quantity }}</p>
+          <p>Total: ₹{{ item.unitPrice * item.quantity }}</p>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </div>
+
+  <ng-template #noOrders>
+    <p class="no-orders">No orders found.</p>
+  </ng-template>
+</div>
+
+<ng-template #notLoggedIn>
+  <p class="no-orders">Please log in to view your order history.</p>
+</ng-template>

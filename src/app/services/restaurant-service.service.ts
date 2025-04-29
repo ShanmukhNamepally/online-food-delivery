@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Restaurant } from '../Models/restaurants.model';
-import { MenuItem } from '../Models/menu-item.model';
+import { Restaurant } from '../../Models/restaurants.model';
+import { MenuItem } from '../../Models/menu-item.model';
 import { AuthService } from './auth.service';
 
 @Injectable({

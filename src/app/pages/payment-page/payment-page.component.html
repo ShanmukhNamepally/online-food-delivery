@@ -1,7 +1,7 @@
 <div class="payment-container">
   <h2>Payment Details</h2>
 
-  <form (ngSubmit)="onPay()">
+  <form #paymentForm="ngForm" (ngSubmit)="onPay(paymentForm)">
     <label>Amount: ₹{{ amount }}</label>
 
     <div>
@@ -11,16 +11,31 @@
         <option value="card">Credit/Debit Card</option>
         <option value="wallet">Wallet</option>
       </select>
+      <div *ngIf="paymentForm.controls['paymentMethod']?.invalid && (paymentForm.controls['paymentMethod']?.dirty || paymentForm.controls['paymentMethod']?.touched)" class="error-message">
+        Please select a payment method.
+      </div>
     </div>
 
     <div *ngIf="paymentMethod === 'card'">
       <input type="text" placeholder="Card Number" [(ngModel)]="cardNumber" name="cardNumber" required>
+      <div *ngIf="paymentForm.controls['cardNumber']?.invalid && (paymentForm.controls['cardNumber']?.dirty || paymentForm.controls['cardNumber']?.touched)" class="error-message">
+        Please enter your card number.
+      </div>
       <input type="text" placeholder="Cardholder Name" [(ngModel)]="cardName" name="cardName" required>
+      <div *ngIf="paymentForm.controls['cardName']?.invalid && (paymentForm.controls['cardName']?.dirty || paymentForm.controls['cardName']?.touched)" class="error-message">
+        Please enter the cardholder name.
+      </div>
       <input type="text" placeholder="Expiry Date (MM/YY)" [(ngModel)]="expiryDate" name="expiryDate" required>
+      <div *ngIf="paymentForm.controls['expiryDate']?.invalid && (paymentForm.controls['expiryDate']?.dirty || paymentForm.controls['expiryDate']?.touched)" class="error-message">
+        Please enter the expiry date.
+      </div>
       <input type="password" placeholder="CVV" [(ngModel)]="cvv" name="cvv" required>
+      <div *ngIf="paymentForm.controls['cvv']?.invalid && (paymentForm.controls['cvv']?.dirty || paymentForm.controls['cvv']?.touched)" class="error-message">
+        Please enter the CVV.
+      </div>
     </div>
 
-    <button type="submit" [disabled]="processingPayment || paymentProcessed">Pay Now</button>
+    <button type="submit" [disabled]="processingPayment || paymentProcessed || paymentForm.invalid">Pay Now</button>
   </form>
 
   <div *ngIf="processingPayment">
@@ -32,3 +47,11 @@
     <p>You will be redirected to your dashboard shortly...</p>
   </div>
 </div>
+
+<style>
+  .error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+  }
+</style>

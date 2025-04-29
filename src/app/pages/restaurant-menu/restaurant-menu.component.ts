@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { CartService } from '../../cart.service';
+import { CartService } from '../../services/cart.service';
 import { MenuItem as MenuItemModel } from '../../../Models/menu-item.model';
-import { OrderItemsService } from '../../order-items.service';
+import { OrderItemsService } from '../../services/order-items.service';
 import { OrderItem } from '../../../Models/order-items.model';
 
 @Component({

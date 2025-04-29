@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MenuItem as MenuItemModel } from '../Models/menu-item.model';
+import { MenuItem as MenuItemModel } from '../../Models/menu-item.model';
 import { AuthService } from './auth.service';
-import { OrderItem } from '../Models/order-items.model';
+import { OrderItem } from '../../Models/order-items.model';
 
 @Injectable({
   providedIn: 'root'

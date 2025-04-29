@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { CartService } from '../../cart.service';
+import { CartService } from '../../services/cart.service';
 import { OrderItem } from '../../../Models/order-items.model';
  
 @Component({
@@ -32,23 +32,27 @@ export class CartComponent {
  
  
   increaseQty(item: OrderItem): void {
-   
-    this.cartService.increaseQty(item);
+    this.cartService.increaseQty(item).subscribe({
+      next: () => {
+        this.updateTotal();
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    });
+  }
   
-    this.updateTotal();
-    console.log('Quantity increased:', item);
-
-  }
- 
   decreaseQty(item: OrderItem): void {
-    
-    this.cartService.decreaseQty(item);
-   
-    this.updateTotal();
-   
-    
-    console.log('Quantity decreased:', item);
+    this.cartService.decreaseQty(item).subscribe({
+      next: () => {
+        this.updateTotal();
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    });
   }
+  
  
   removeItem(index: number): void {
     const itemID = this.cartItems[index].orderItemID;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../services/auth.service';
  
 @Component({
   selector: 'app-customer-dashboard',
@@ -20,7 +20,7 @@ export class CustomerDashboardComponent {
   }
  
   goToOrders() {
-    this.router.navigate(['/order-tracking']);
+    this.router.navigate(['/order-history']);
   }
 
   goToHome(){
